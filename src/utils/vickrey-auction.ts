@@ -16,7 +16,7 @@ export type VickreyAuctionResult = {
 export function vickreyAuction(bidders: Bidder[], reservePrice: number): VickreyAuctionResult {
   const allBids: Winner[] = [];
 
-  if (bidders.length === 0) {
+  if (!bidders || bidders.length === 0) {
     return {
       winner: null,
       winningPrice: reservePrice,
@@ -35,8 +35,15 @@ export function vickreyAuction(bidders: Bidder[], reservePrice: number): Vickrey
 
   allBids.sort((a: Winner, b: Winner) => b.bid - a.bid);
 
+  if (allBids.length === 0) {
+    return {
+      winner: null,
+      winningPrice: reservePrice,
+    };
+  }
+
   const winner = allBids[0].name;
-  let winningPrice = 0;
+  let winningPrice = reservePrice;
 
   for (const { name, bid } of allBids) {
     if (name !== winner) {
@@ -44,6 +51,8 @@ export function vickreyAuction(bidders: Bidder[], reservePrice: number): Vickrey
       break;
     }
   }
+
+  console.log(winner, winningPrice);
 
   return {
     winner,
@@ -54,10 +63,6 @@ export function vickreyAuction(bidders: Bidder[], reservePrice: number): Vickrey
 vickreyAuction(
   [
     { name: 'A', bids: [110, 130] },
-    { name: 'B', bids: [] },
-    { name: 'C', bids: [125] },
-    { name: 'D', bids: [105, 115, 90] },
-    { name: 'E', bids: [132, 135, 140] },
   ],
   100,
 )
