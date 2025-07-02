@@ -1,0 +1,36 @@
+{
+  "product": {
+    "id": 1,
+    "name": "Wind turbines",
+    "description": "Efficient, quiet, and eco-friendly. Our wind turbine delivers reliable green energy, even in low wind. Cut costs and reduce your carbon footprint.",
+    "image": "../photo-1654083198752-56ff209c8129.avif",
+    "reservePrice": 999,
+    "state": "Closed"
+  },
+  "bidders": [
+    {
+      "name": "John",
+      "bids": [100, 110, 120]
+    },
+    {
+      "name": "Jane", 
+      "bids": [105, 115, 950]
+    },
+    {
+      "name": "Bob",
+      "bids": [132, 135, 450]
+    },
+    {
+      "name": "Alice",
+      "bids": [100, 110, 200]
+    },
+    {
+      "name": "Eve",
+      "bids": [105, 115, 900]
+    },
+    {
+      "name": "Charlie",
+      "bids": [132, 135, 1400]
+    }
+  ]
+}

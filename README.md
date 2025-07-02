@@ -1,45 +1,133 @@
-# kerdres-test
+# 🏛️ Auction House - Système d'Enchères Vickrey
 
-This template should help get you started developing with Vue 3 in Vite.
+Application web moderne implémentant l'algorithme d'enchères de Vickrey avec Vue.js 3, TypeScript et Tailwind CSS.
 
-## Recommended IDE Setup
+## 🎯 Vue d'ensemble
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+L'application affiche un article aux enchères et calcule automatiquement les gagnants selon l'algorithme de Vickrey : le gagnant (enchère la plus élevée) paie le prix de la deuxième enchère la plus élevée.
 
-## Type Support for `.vue` Imports in TS
+**Stack technique :** Vue 3 + TypeScript + Tailwind CSS + Vite + Vitest
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## 🏗️ Architecture
 
-## Customize configuration
+```
+src/
+├── App.vue                    # Composant racine + layout
+├── views/HomeView.vue         # Interface principale d'enchères
+├── composables/useAuction.ts  # Gestion des données d'enchères
+├── utils/vickrey-auction.ts   # Algorithme de Vickrey + tests
+├── types/auction.ts           # Interfaces TypeScript
+└── assets/main.css            # Styles Tailwind
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+public/datas/auction.json      # Données mockées
+```
 
-## Project Setup
+## 🔄 Flux d'exécution
 
-```sh
+1. **HomeView** utilise `useAuction()` pour récupérer les données
+2. Affichage du produit avec image, description et prix de réserve
+3. Bouton "Show Winner" déclenche le calcul via `vickreyAuction()`
+4. Affichage des résultats avec winner et prix final
+
+## 🧩 Composants clés
+
+### `useAuction.ts` - Composable de données
+```typescript
+export function useAuction(apiUrl = '/datas/auction.json') {
+  return { 
+    auction, bidders, product,    // Données réactives
+    isLoading, error,             // États
+    getAuction                    // Fonction fetch
+  }
+}
+```
+
+### `vickrey-auction.ts` - Algorithme principal
+```typescript
+export function vickreyAuction(bidders: Bidder[], reservePrice: number): VickreyAuctionResult {
+  // 1. Collecte toutes les enchères >= prix de réserve
+  // 2. Trie par ordre décroissant
+  // 3. Gagnant = enchère la plus élevée
+  // 4. Prix = deuxième enchère la plus élevée du non gagnant (ou prix de réserve)
+}
+```
+
+**Gestion des cas particuliers :**
+- Aucune enchère valide → Pas de gagnant
+- Un seul enchérisseur → Paie le prix de réserve
+- Enchères multiples par personne → Toutes prises en compte
+
+### `HomeView.vue` - Interface utilisateur
+- États de chargement/erreur
+- Calcul temps réel du gagnant via computed property
+- Affichage conditionnel des résultats
+
+## 🚀 Installation & Utilisation
+
+```bash
+# Installation
 pnpm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Développement
 pnpm dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
+# Production
 pnpm build
-```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
+# Tests
 pnpm test:unit
-```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+# Linting
 pnpm lint
 ```
+
+## 🧪 Tests
+
+**195 lignes de tests** dans `vickrey-auction.test.ts` couvrant :
+- Cas normaux (enchères multiples, égalités)
+- Cas limites (aucune enchère, un seul enchérisseur)
+- Validation d'entrée (valeurs nulles, types invalides)
+- Précision numérique (100+ enchérisseurs, décimales)
+
+## 📊 Structure des données
+
+```typescript
+interface Auction {
+  product: {
+    id: number
+    name: string
+    description: string
+    image: string
+    reservePrice: number
+    state: 'In progress' | 'Closed'
+  }
+  bidders: Array<{
+    name: string
+    bids: number[]
+  }>
+}
+```
+
+**Exemple :** 6 enchérisseurs, 3 enchères par personne, prix de réserve 999€
+
+## 🔧 Qualité du code
+
+### Hooks pre-commit (Husky)
+- Tests unitaires obligatoires
+- Linting + formatage automatique
+- Vérification TypeScript
+
+### Configuration
+- **ESLint + Prettier** : Style de code cohérent
+
+## 🎨 Décisions techniques
+
+### Architecture
+- **Composition API** : Logique réutilisable et typée
+- **Composables** : Séparation claire data/UI
+- **Types centralisés** : Cohérence TypeScript
+- **Tests exhaustifs** : Algorithme critique validé
+
+### UI/UX
+- **Mobile-first** : Responsive design avec Tailwind
+- **Performance** : Images optimisées, fetch prioritaire 

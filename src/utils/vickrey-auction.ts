@@ -52,12 +52,8 @@ export function vickreyAuction(bidders: Bidder[], reservePrice: number): Vickrey
     }
   }
 
-  console.log(winner, winningPrice)
-
   return {
     winner,
     winningPrice,
   }
 }
-
-vickreyAuction([{ name: 'A', bids: [110, 130] }], 100)
