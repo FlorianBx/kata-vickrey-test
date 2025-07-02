@@ -1,7 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HomeView from './views/HomeView.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
+  <main class="flex flex-col items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8">
+    <HomeView />
+  </main>
 </template>
 
 <style scoped></style>
