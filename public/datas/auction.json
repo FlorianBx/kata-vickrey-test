@@ -4,6 +4,7 @@
     "name": "Wind turbines",
     "description": "Efficient, quiet, and eco-friendly. Our wind turbine delivers reliable green energy, even in low wind. Cut costs and reduce your carbon footprint.",
     "image": "../photo-1654083198752-56ff209c8129.avif",
+    "imageAlt": "Offshore wind turbines generating renewable energy in the ocean under a clear blue sky",
     "reservePrice": 999,
     "state": "Closed"
   },

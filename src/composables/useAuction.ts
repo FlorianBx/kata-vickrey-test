@@ -21,7 +21,6 @@ export function useAuction(apiUrl = DEFAULT_AUCTION_URL) {
     } catch (err: unknown) {
       if (err instanceof Error) {
         error.value = err.message ? err.message : 'Unknown error occurred'
-        throw new Error(error.value)
       }
     } finally {
       isLoading.value = false

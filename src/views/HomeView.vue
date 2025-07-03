@@ -42,7 +42,7 @@ onMounted(() => {
             <img
               class="h-full w-full object-cover"
               :src="product.image"
-              alt="Offshore wind turbines generating renewable energy in the ocean under a clear blue sky"
+              :alt="product.imageAlt || ''"
               width="600"
               height="450"
               fetchpriority="high"

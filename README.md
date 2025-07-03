@@ -98,6 +98,7 @@ interface Auction {
     name: string
     description: string
     image: string
+    imageAlt: string
     reservePrice: number
     state: 'In progress' | 'Closed'
   }
@@ -113,7 +114,7 @@ interface Auction {
 ## 🔧 Qualité du code
 
 ### Hooks pre-commit (Husky)
-- Tests unitaires obligatoires
+- Tests unitaires
 - Linting + formatage automatique
 - Vérification TypeScript
 
