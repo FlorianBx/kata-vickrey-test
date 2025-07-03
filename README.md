@@ -126,7 +126,7 @@ interface Auction {
 - **Composition API** : Logique réutilisable et typée
 - **Composables** : Séparation claire data/UI
 - **Types centralisés** : Cohérence TypeScript
-- **Tests exhaustifs** : Algorithme critique validé
+- **Tests exhaustifs (TDD)** : Algorithme critique validé
 
 ### UI/UX
 - **Mobile-first** : Responsive design avec Tailwind
