@@ -134,3 +134,21 @@ interface Auction {
 
 ## 🏋🏻‍♀️ Core vitals
 <img width="770" alt="image" src="https://github.com/user-attachments/assets/8553c0dd-cb81-407e-8dcb-7623cd9c5ab0" />
+
+---
+
+## 🔴 Tester en live
+
+### Lien de la prod :
+- [https://test-kerdres-agency.netlify.app/](https://test-kerdres-agency.netlify.app/)
+
+### Ouvrir la console et aller sur network :
+<img width="1461" alt="Screenshot 2025-07-03 at 4 02 20 AM" src="https://github.com/user-attachments/assets/137093ec-e3f9-4522-b704-c364e7371682" />
+
+### Clique droit sur auction.json et clique gauche sur override content :
+<img width="1455" alt="Screenshot 2025-07-03 at 4 03 31 AM" src="https://github.com/user-attachments/assets/83712bc4-9025-4163-ad99-941a956a2584" />
+
+### Éditez les valeurs pour tester l'algorithme :
+<img width="1456" alt="Screenshot 2025-07-03 at 4 04 50 AM" src="https://github.com/user-attachments/assets/b65413cd-f13c-4bc2-902b-82499092d86d" />
+
+ **Scroll jusqu'au bouton `Show winner` et tester le résultat**
