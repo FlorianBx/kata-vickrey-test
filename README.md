@@ -131,3 +131,6 @@ interface Auction {
 ### UI/UX
 - **Mobile-first** : Responsive design avec Tailwind
 - **Performance** : Images optimisées, fetch prioritaire 
+
+## 🏋🏻‍♀️ Core vitals
+<img width="770" alt="image" src="https://github.com/user-attachments/assets/8553c0dd-cb81-407e-8dcb-7623cd9c5ab0" />
