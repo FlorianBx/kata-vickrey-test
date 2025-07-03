@@ -45,7 +45,6 @@ onMounted(() => {
               :alt="product.imageAlt || ''"
               width="600"
               height="450"
-              fetchpriority="high"
             />
             <div class="absolute top-4 right-4">
               <span
